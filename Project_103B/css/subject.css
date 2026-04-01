@@ -1,0 +1,126 @@
+body {
+  background-color: #f8f9fa;
+  font-family: sans-serif;
+}
+
+.logo-icon {
+  font-size: 32px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid #dee2e6;
+  position: fixed;
+  padding: 20px;
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.table thead.table-light {
+    background-color: rgb(240, 240, 240) !important;
+}
+  
+.table thead th {
+    background-color: rgb(240, 240, 240) !important; 
+    color: #6b7280;           
+    font-weight: 500;         
+    font-size: 0.875rem;       
+    text-transform: none;      
+    border-bottom: 1px solid #f3f4f6; 
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.table thead th i {
+    color: #9ca3af;
+    font-size: 0.75rem;
+}
+
+
+.status-active {
+  background-color: #e6fcf5;
+  color: #0ca678;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 14px;
+}
+.status-inactive {
+  background-color: #fff5f5;
+  color: #f03e3e;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 14px;
+}
+
+.nav-link.active {
+  background-color: #e7f1ff;
+  color: #0d6efd;
+  border-radius: 8px;
+}
+.table {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.btn-action {
+  border: none;
+  background: none;
+  margin: 0 5px;
+}
+.btn-edit {
+  color: #fcc419;
+}
+.btn-delete {
+  color: #ff6b6b;
+}
+
+.pagination .page-link {
+  color: #6c757d;
+  background-color: transparent;
+  border: 1px solid #dee2e6;
+  padding: 8px 12px;
+  font-weight: 500;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: #fff;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+.btn-action {
+  font-size: 1.1rem;
+}
+
+#addSubjectModal .modal-content {
+    padding: 10px;
+}
+
+#addSubjectModal .form-control:focus {
+    border-color: #007bff;
+}
+
+#addSubjectModal .form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 1);
+}

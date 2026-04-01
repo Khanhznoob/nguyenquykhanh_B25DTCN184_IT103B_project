@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/popup.css">
+</head>
+<body>
+
+<!-- Nền mờ của popup -->
+<div class="modal-overlay">
+    <!-- Hộp thoại chính -->
+    <div class="modal-container">
+        <!-- Tiêu đề và nút đóng -->
+        <div class="modal-header">
+            <h3>Thêm mới môn học</h3>
+            <span class="close-btn">&times;</span>
+        </div>
+
+        <!-- Nội dung form -->
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Tên môn học</label>
+                <input type="text" placeholder="Nhập tên môn học...">
+            </div>
+
+            <div class="form-group">
+                <label>Trạng thái</label>
+                <div class="radio-group">
+                    <input type="radio" id="active" name="status" checked>
+                    <label for="active">Đang hoạt động</label>
+                    
+                    <input type="radio" id="inactive" name="status">
+                    <label for="inactive">Ngừng hoạt động</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Các nút bấm -->
+        <div class="modal-footer">
+            <button class="btn btn-cancel">Hủy</button>
+            <button class="btn btn-submit">Thêm</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

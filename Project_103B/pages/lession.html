@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Tracker - Quản lý bài học</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/lession.css" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="d-flex align-items-center mb-4">
+      <div class="logo-icon">📚</div>
+      <div>
+        <strong class="d-block">Study Tracker</strong>
+        <small class="text-muted">Quản lý tiến độ học tập</small>
+      </div>
+    </div>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a href="#" class="nav-link text-dark"><img src="../assets/icons/Vector.svg" alt="vector"> Thống kê</a>
+      </li>
+      <li class="nav-item">
+        <a href="../pages/subject.html" class="nav-link text-dark"><img src="../assets/icons/subject.svg"
+            alt="subject"></i> Quản lý môn học</a>
+      </li>
+      <li class="nav-item">
+        <a href="../pages/lession.html" class="nav-link active"><img src="../assets/icons/blue-lession.svg"
+            alt="blue-lession"> Quản lý bài học</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="grid-icon">
+        <img src="../assets/icons/menu.svg" alt="Menu">
+      </div>
+      <div class="d-flex align-items-center gap-3">
+           <img src="../assets/icons/notification.svg" alt="notification">
+        <img src="../assets/icons/infor.svg" alt="i4">
+        <img src="../assets/icons/setting.svg" alt="setting">
+        <img src="../assets/images/Avatar w. photo.png" alt="avt">
+      </div>
+    </div>
+
+    <div class="row mb-4 align-items-center">
+      <div class="col-md-4">
+        <h3 class="fw-bold">Bài học</h3>
+      </div>
+      <div class="col-md-8 d-flex justify-content-end gap-2">
+        <select class="form-select w-25">
+          <option>Lọc theo môn học</option>
+          <option value="Session 01">Session 01 - Tổng quan về HTML</option>
+          <option value="Session 02">Session 02 - Thẻ Inline và Block</option>
+          <option value="Session 12">Session 12 - Thẻ Inline và Block</option>
+        </select>
+        <button class="btn btn-primary px-4">Thêm mới bài học</button>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="input-group ms-auto" style="width: 300px">
+        <input type="text" class="form-control" placeholder="Tìm kiếm bài học theo tên..." />
+        <span class="input-group-text bg-white"><img src="../assets/icons/search.svg" alt="search"></span>
+      </div>
+    </div>
+    <div class="card border-0 shadow-sm">
+      <table class="table align-middle mb-0">
+        <thead class="table-light">
+          <tr class="text-muted" style="font-size: 0.9rem">
+            <th class="ps-4" style="width: 50px">
+              <input type="checkbox" class="form-check-input" />
+            </th>
+            <th>Tên bài học <i class="fa-solid fa-arrow-down ms-1"></i></th>
+            <th>Thời gian học <i class="fa-solid fa-arrow-down ms-1"></i></th>
+            <th>Trạng thái</th>
+            <th class="text-center">Chức năng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ps-4">
+              <input type="checkbox" class="form-check-input" checked />
+            </td>
+            <td>Session 01 - Tổng quan về HTML</td>
+            <td>45</td>
+            <td><span class="status-active">● Đã hoàn thành</span></td>
+            <td class="text-center">
+              <button class="btn-action btn-delete">
+                <img src="../assets/icons/rubbish.svg" alt="rubbish">
+              </button>
+              <button class="btn-action btn-edit">
+                <img src="../assets/icons/pen.svg" alt="pen">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="ps-4">
+              <input type="checkbox" class="form-check-input" />
+            </td>
+            <td>Session 02 - Thẻ Inline và Block</td>
+            <td>60</td>
+            <td><span class="status-inactive">● Chưa hoàn thành</span></td>
+            <td class="text-center">
+              <button class="btn-action btn-delete">
+                <img src="../assets/icons/rubbish.svg" alt="rubbish">
+              </button>
+              <button class="btn-action btn-edit">
+                <img src="../assets/icons/pen.svg" alt="pen">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="ps-4">
+              <input type="checkbox" class="form-check-input" checked />
+            </td>
+            <td>Session 12 - Con trỏ trong C</td>
+            <td>45</td>
+            <td><span class="status-active">● Đã hoàn thành</span></td>
+            <td class="text-center">
+              <button class="btn-action btn-delete">
+                <img src="../assets/icons/rubbish.svg" alt="rubbish">
+              </button>
+              <button class="btn-action btn-edit">
+                <img src="../assets/icons/pen.svg" alt="pen">
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <nav class="mt-4">
+      <ul class="pagination justify-content-center border-0 gap-1">
+        <li class="page-item">
+          <a class="page-link border rounded" href="#"><i class="fa-solid fa-arrow-left"></i></a>
+        </li>
+        <li class="page-item">
+          <a class="page-link border rounded" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link border rounded" href="#">2</a>
+        </li>
+        <li class="page-item active">
+          <a class="page-link border rounded" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link border rounded" href="#">4</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link border rounded" href="#">...</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link border rounded" href="#">20</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link border rounded" href="#"><i class="fa-solid fa-arrow-right"></i></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</body>
+
+</html>
