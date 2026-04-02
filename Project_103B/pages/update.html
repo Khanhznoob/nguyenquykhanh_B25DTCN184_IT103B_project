@@ -4,41 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/create.css">
+    <link rel="stylesheet" href="../css/update.css">
 </head>
 <body>
 
-<div class="add-subject-container">
+<div class="modal-container" id="edit-modal">
     <div class="form-card">
         <div class="form-header">
-            <h3>Thêm mới môn học</h3>
+            <h3>Cập nhật môn học</h3>
             <span class="close-icon">&times;</span>
         </div>
         
         <form class="form-body">
             <div class="input-group">
-                <label for="subject-name">Tên môn học</label>
-                <input type="text" id="subject-name">
+                <label>Tên môn học</label>
+                <input type="text" value="Phân tích và thiết kế hệ thống" placeholder="Nhập tên môn học">
             </div>
 
             <div class="status-group">
                 <label>Trạng thái</label>
                 <div class="radio-options">
                     <label class="radio-item">
-                        <input type="radio" name="status" checked>
-                        <span class="custom-radio"></span>
-                        Đang hoạt động
+                        <input type="radio" name="status-edit" checked>
+                        <span class="radio-circle"></span> Đang hoạt động
                     </label>
                     <label class="radio-item">
-                        <input type="radio" name="status">
-                        <span class="custom-radio"></span>
-                        Ngừng hoạt động
+                        <input type="radio" name="status-edit">
+                        <span class="radio-circle"></span> Ngừng hoạt động
                     </label>
                 </div>
             </div>
+
             <div class="form-actions">
                 <button type="button" class="btn-cancel">Hủy</button>
-                <button type="submit" class="btn-submit">Thêm</button>
+                <button type="submit" class="btn-submit">Lưu</button>
             </div>
         </form>
     </div>

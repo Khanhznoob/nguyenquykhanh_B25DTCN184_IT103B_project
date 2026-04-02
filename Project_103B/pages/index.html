@@ -1,59 +1,64 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng ký tài khoản</title>
-    <link rel="stylesheet" href="../css/register.css" />
-  </head>
-  <body>
-    <div class="register-container">
-      <div class="header">
-        <h2>Đăng ký tài khoản</h2>
-        <p>Đăng ký tài khoản để sử dụng dịch vụ</p>
-      </div>
 
-      <form action="#" method="POST">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="lastName">Họ và tên đệm</label>
-            <input type="text" id="lastName" name="lastName" required />
-          </div>
-          <div class="form-group">
-            <label for="firstName">Tên</label>
-            <input type="text" id="firstName" name="firstName" required />
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng ký tài khoản</title>
+  <link rel="stylesheet" href="../css/register.css" />
+</head>
 
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="you@company.com"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="password">Mật khẩu</label>
-          <input type="password" id="password" name="password" required />
-        </div>
-
-        <div class="form-group checkbox-group">
-          <input type="checkbox" id="terms" name="terms" required />
-          <label for="terms"
-            >Bạn đồng ý với <a href="#">chính sách và điều khoản</a></label
-          >
-        </div>
-
-        <button type="submit" class="submit-btn">Đăng ký</button>
-      </form>
-
-      <div class="footer">
-        <strong>Bạn đã có tài khoản?</strong> <a href="./login.html">Đăng nhập</a>
-      </div>
+<body>
+  <div class="register-container">
+    <div class="header">
+      <h2>Đăng ký tài khoản</h2>
+      <p>Đăng ký tài khoản để sử dụng dịch vụ</p>
     </div>
-  </body>
+
+    <form action="#" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="lastName">Họ và tên đệm</label>
+          <input type="text" id="lastName" name="lastName" />
+          <span class="error-message" id="error-lastName"></span>
+        </div>
+        <div class="form-group">
+          <label for="firstName">Tên</label>
+          <input type="text" id="firstName" name="firstName" />
+          <span class="error-message" id="error-firstName"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@company.com" />
+        <span class="error-message" id="error-email"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" name="password" />
+        <span class="error-message" id="error-password"></span>
+      </div>
+
+     
+
+      <div class="form-group checkbox-group">
+        <div>
+          <input type="checkbox" id="terms" name="terms" />
+          <label for="terms">Bạn đồng ý với <a href="#">chính sách và điều khoản</a></label>
+        </div>
+        <span class="error-message" id="error-terms"></span>
+      </div>
+
+      <button type="submit" class="submit-btn">Đăng ký</button>
+    </form>
+
+    <div class="footer">
+      <strong>Bạn đã có tài khoản?</strong> <a href="./login.html">Đăng nhập</a>
+    </div>
+  </div>
+<script src="../js/index.js"></script>
+</body>
+
 </html>

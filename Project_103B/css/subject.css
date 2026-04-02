@@ -28,23 +28,23 @@ body {
 }
 
 .table thead.table-light {
-    background-color: rgb(240, 240, 240) !important;
+  background-color: rgb(240, 240, 240) !important;
 }
-  
+
 .table thead th {
-    background-color: rgb(240, 240, 240) !important; 
-    color: #6b7280;           
-    font-weight: 500;         
-    font-size: 0.875rem;       
-    text-transform: none;      
-    border-bottom: 1px solid #f3f4f6; 
-    padding-top: 12px;
-    padding-bottom: 12px;
+  background-color: rgb(240, 240, 240) !important;
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: none;
+  border-bottom: 1px solid #f3f4f6;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .table thead th i {
-    color: #9ca3af;
-    font-size: 0.75rem;
+  color: #9ca3af;
+  font-size: 0.75rem;
 }
 
 
@@ -55,6 +55,7 @@ body {
   padding: 5px 12px;
   font-size: 14px;
 }
+
 .status-inactive {
   background-color: #fff5f5;
   color: #f03e3e;
@@ -68,6 +69,7 @@ body {
   color: #0d6efd;
   border-radius: 8px;
 }
+
 .table {
   background: #fff;
   border-radius: 8px;
@@ -79,9 +81,11 @@ body {
   background: none;
   margin: 0 5px;
 }
+
 .btn-edit {
   color: #fcc419;
 }
+
 .btn-delete {
   color: #ff6b6b;
 }
@@ -108,19 +112,61 @@ body {
   font-size: 1.1rem;
 }
 
-#addSubjectModal .modal-content {
-    padding: 10px;
+.modal-content {
+  border-radius: 12px;
+  padding: 10px;
 }
 
-#addSubjectModal .form-control:focus {
-    border-color: #007bff;
+.modal-header .btn-close {
+  font-size: 0.8rem;
 }
 
-#addSubjectModal .form-check-input:checked {
-    background-color: #007bff;
-    border-color: #007bff;
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1);
 }
 
-.modal-backdrop {
-    background-color: rgba(0, 0, 0, 1);
+.modal-footer .btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.modal-footer .btn-outline-secondary {
+  border-color: #dee2e6;
+  color: #6c757d;
+}
+
+.custom-tick-checkbox .form-check-input {
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.15em;
+  cursor: pointer;
+}
+
+.custom-tick-checkbox .form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e") !important;
+}
+
+
+
+#deleteSubjectModal .modal-content {
+  border-radius: 16px;
+  border: none;
+}
+
+#deleteSubjectModal .btn-danger {
+  background-color: #e03131;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+#deleteSubjectModal .btn-light {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  border-radius: 8px;
+  font-weight: 500;
 }

@@ -165,6 +165,17 @@ a:hover {
   font-size: 13px;
   color: #4b5563;
 }
+.error-message {
+  color: #ef4444; 
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+  min-height: 15px; 
+}
+
+input.input-error {
+  border-color: #ef4444 !important;
+}
 
 @media (max-width: 500px) {
   body {
