@@ -8,6 +8,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../css/subject.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script>
+    const user = JSON.parse(localStorage.getItem('currentUser')) || JSON.parse(sessionStorage.getItem('currentUser'));
+
+    if (!user) {
+      window.location.href = './login.html';
+    }
+  </script>
 </head>
 
 <body>
@@ -37,37 +45,54 @@
   <div class="main-content">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div class="grid-icon">
-        <img src="../assets/icons/menu.svg" alt="Pen">
+        <img src="../assets/icons/menu.svg" alt="Menu">
       </div>
 
       <div class="d-flex align-items-center gap-3">
         <img src="../assets/icons/notification.svg" alt="notification">
         <img src="../assets/icons/infor.svg" alt="i4">
         <img src="../assets/icons/setting.svg" alt="setting">
-        <img src="../assets/images/Avatar w. photo.png" alt="avt">
+
+        <div class="dropdown">
+          <img src="../assets/images/Avatar w. photo.png" alt="avt" class="avatar dropdown-toggle" id="userDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+          <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-user me-2"></i> Hồ sơ</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#logoutConfirmModal">
+                <i class="fa-solid fa-right-from-bracket me-2"></i> Đăng xuất
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-
     <div class="row mb-4 align-items-center">
       <div class="col-md-4">
-        <h3 class="fw-bold">Môn học</h3>
+        <h3 class="fw-bold m-0">Môn học</h3>
       </div>
       <div class="col-md-8 d-flex justify-content-end gap-2">
-        <select class="form-select w-25">
-          <option>Lọc theo trạng thái</option>
+        <select class="form-select" id="statusFilter" style="width: 200px;">
+          <option value="all">Lọc theo trạng thái</option>
           <option value="active">Đang hoạt động</option>
           <option value="inactive">Ngừng hoạt động</option>
         </select>
-        <button class="btn btn-primary px-4" data-bs-target="#addSubjectModal"> Thêm mới môn học
+        <button class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#addSubjectModal"
+          onclick="clearInputError()">
+          Thêm mới môn học
         </button>
       </div>
     </div>
 
-    <div class="mb-3">
-      <div class="input-group ms-auto" style="width: 300px">
-        <input type="text" class="form-control" placeholder="Tìm kiếm môn học theo tên...">
+    <div class="d-flex justify-content-end mb-3">
+      <div class="input-group" style="width: 300px">
+        <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm môn học theo tên...">
         <span class="input-group-text bg-white">
-          <img src="../assets/icons/search.svg" alt="search"></span>
+          <img src="../assets/icons/search.svg" alt="search">
+        </span>
       </div>
     </div>
 
@@ -75,39 +100,28 @@
       <table class="table align-middle mb-0">
         <thead class="table-light">
           <tr>
-            <th class="ps-4">
-              Tên môn học
-              <i class="fa-solid fa-arrow-down"></i>
-            </th>
+            <th class="ps-4">Tên môn học <i class="fa-solid fa-arrow-down"></i></th>
             <th>Trạng thái</th>
             <th class="text-center">Chức năng</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
+        <tbody id="subject-table-body">
+          <!-- <tr>
             <td class="ps-4">Lập trình C</td>
             <td><span class="status-active">● Đang hoạt động</span></td>
             <td class="text-center">
-              <button class="btn-action btn-delete" data-bs-target="#deleteSubjectModal">
-                <img src="../assets/icons/rubbish.svg" alt="rubbish">
-              </button>
-              <button class="btn-action btn-edit" data-bs-target="#editSubjectModal">
-                <img src="../assets/icons/pen.svg" alt="Pen">
-              </button>
+              <button class="btn-action btn-delete"><img src="../assets/icons/rubbish.svg" alt="delete"></button>
+              <button class="btn-action btn-edit"><img src="../assets/icons/pen.svg" alt="edit"></button>
             </td>
           </tr>
           <tr>
             <td class="ps-4">Lập trình Frontend với ReactJS</td>
             <td><span class="status-inactive">● Ngừng hoạt động</span></td>
             <td class="text-center">
-              <button class="btn-action btn-delete" data-bs-target="#deleteSubjectModal">
-                <img src="../assets/icons/rubbish.svg" alt="rubbish">
-              </button>
-              <button class="btn-action btn-edit" data-bs-target="#editSubjectModal">
-                <img src="../assets/icons/pen.svg" alt="Pen">
-              </button>
+              <button class="btn-action btn-delete"><img src="../assets/icons/rubbish.svg" alt="delete"></button>
+              <button class="btn-action btn-edit"><img src="../assets/icons/pen.svg" alt="edit"></button>
             </td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
@@ -117,13 +131,13 @@
         <li class="page-item">
           <a class="page-link border rounded" href="#"><i class="fa-solid fa-arrow-left"></i></a>
         </li>
-        <li class="page-item">
+        <li class="page-item active">
           <a class="page-link border rounded" href="#">1</a>
         </li>
         <li class="page-item">
           <a class="page-link border rounded" href="#">2</a>
         </li>
-        <li class="page-item active">
+        <li class="page-item">
           <a class="page-link border rounded" href="#">3</a>
         </li>
         <li class="page-item">
@@ -142,20 +156,21 @@
     </nav>
   </div>
 
-  <!-- popup them moi -->
-  <div class="modal fade " id="addSubjectModal" tabindex="-1" style="display: block; background: rgba(0,0,0,0.5);"
-    aria-modal="true" role="dialog">
+  <!-- popup them moi va cap nhat -->
+  <div class="modal fade" id="addSubjectModal" tabindex="-1" aria-labelledby="addSubjectModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content border-0 shadow-lg">
         <div class="modal-header border-0">
           <h5 class="modal-title fw-bold" id="addSubjectModalLabel">Thêm mới môn học</h5>
-          <button type="button" class="btn-close" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
         <div class="modal-body">
-          <form>
+          <form id="subjectForm">
             <div class="mb-4">
               <label for="subjectName" class="form-label text-muted small fw-bold">Tên môn học</label>
-              <input type="text" class="form-control py-2" id="subjectName">
+              <input type="text" class="form-control py-2" id="subjectName" placeholder="Nhập tên môn học...">
+              <div id="subjectNameError" class="text-danger small mt-1" style="display: none;"></div>
             </div>
 
             <div class="mb-4">
@@ -175,6 +190,7 @@
             </div>
           </form>
         </div>
+
         <div class="modal-footer border-0 pb-4">
           <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal">Hủy</button>
           <button type="button" class="btn btn-primary px-4 py-2">Thêm</button>
@@ -182,72 +198,48 @@
       </div>
     </div>
   </div>
-
-  <!-- popup cap nhat -->
-  <div class="modal fade " id="editSubjectModal" tabindex="-1" style="display: block; background: rgba(0,0,0,0.5);"
-    aria-modal="true" role="dialog">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content border-0 shadow-lg">
-        <div class="modal-header border-0 pb-0">
-          <h5 class="modal-title fw-bold" id="editSubjectModalLabel">Cập nhật môn học</h5>
-          <button type="button" class="btn-close" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-4">
-              <label for="editSubjectName" class="form-label text-muted small fw-bold">Tên môn học</label>
-              <input type="text" class="form-control py-2" id="editSubjectName" value="Phân tích và thiết kế hệ thống">
-            </div>
-
-            <div class="mb-2">
-              <label class="form-label text-muted small fw-bold d-block mb-3">Trạng thái</label>
-              <div class="d-flex gap-4">
-                <div class="form-check custom-tick-checkbox">
-                  <input class="form-check-input" type="radio" name="editStatusOptions" id="editStatusActive"
-                    value="active" checked>
-                  <label class="form-check-label ms-1" for="editStatusActive">Đang hoạt động</label>
-                </div>
-                <div class="form-check custom-tick-checkbox">
-                  <input class="form-check-input" type="radio" name="editStatusOptions" id="editStatusInactive"
-                    value="inactive">
-                  <label class="form-check-label ms-1" for="editStatusInactive">Ngừng hoạt động</label>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer border-0 pb-4 pt-0">
-          <div class="d-flex justify-content-end gap-2 w-100">
-            <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal">Hủy</button>
-            <button type="button" class="btn btn-primary px-4 py-2">Lưu</button>
+  <!-- popup xoa  -->
+  <div class="modal fade" id="deleteSubjectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg p-4">
+        <div class="modal-body text-start">
+          <div class="mb-3">
+            <img src="../assets/icons/warning.svg" alt="Warning" style="width: 48px; height: 48px;">
+          </div>
+          <h3 class="fw-bold mb-3">Xác nhận</h3>
+          <p class="text-muted fs-5">
+            Bạn có chắc chắn muốn xóa môn học <strong id="deleteSubjectName" class="text-dark"></strong> không?
+          </p>
+          <div class="d-flex justify-content-end gap-3 border-top pt-4 mt-4">
+            <button type="button" class="btn btn-light border px-4" data-bs-dismiss="modal">Hủy</button>
+            <button type="button" id="confirmDeleteBtn" class="btn btn-danger px-4">Xóa</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- popup xoa -->
-<div class="modal fade " id="deleteSubjectModal" tabindex="-1" style="display: block; background: rgba(0,0,0,0.5);" aria-modal="true" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;"> 
-    <div class="modal-content border-0 shadow-lg p-5"> 
-      <div class="modal-body text-start">
-        <div class="mb-4">
-          <img src="../assets/icons/warning.svg" alt="Warning" style="width: 48px; height: 48px;">
+  <!-- xac nhan dxuat -->
+  <div class="modal fade" id="logoutConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">Xác nhận đăng xuất</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        
-        <h3 class="fw-bold mb-3">Xác nhận</h3>
-        <p class="text-muted fs-5 mb-5">
-          Bạn có chắc chắn muốn xóa môn học <strong class="text-dark">Lập trình cơ bản Frontend Fundamental</strong> khỏi hệ thống không?
-        </p>
-        
-        <div class="d-flex justify-content-end gap-3 border-top pt-4">
-          <button type="button" class="btn btn-light border px-5 py-2 fw-medium" data-bs-dismiss="modal">Hủy</button>
-          <button type="button" class="btn btn-danger px-5 py-2 fw-medium">Xóa</button>
+        <div class="modal-body">
+          Bạn có chắc chắn muốn thoát khỏi hệ thống không?
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" id="confirmLogoutBtn" class="btn btn-danger px-4">Đăng xuất</button>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="../js/subject.js"></script>
 </body>
 
 </html>

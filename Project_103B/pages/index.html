@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Đăng ký tài khoản</title>
   <link rel="stylesheet" href="../css/register.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
@@ -31,13 +32,13 @@
 
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@company.com" />
+        <input type="email" id="email" name="email" autocomplete="username" placeholder="you@company.com" />
         <span class="error-message" id="error-email"></span>
       </div>
 
       <div class="form-group">
         <label for="password">Mật khẩu</label>
-        <input type="password" id="password" name="password" />
+        <input type="password" id="password" name="password" autocomplete="new-password" />
         <span class="error-message" id="error-password"></span>
       </div>
 
@@ -56,7 +57,8 @@
       <strong>Bạn đã có tài khoản?</strong> <a href="./login.html">Đăng nhập</a>
     </div>
   </div>
-<script src="../js/index.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="../js/index.js"></script>
 </body>
 
 </html>
